@@ -145,7 +145,7 @@
                             "disableDraftEditStateFilter": true
                         }
                     },
-                    "variantManagement": "Page",
+                    "variantManagement": "None",
                     "initialLoad": "Enabled",
                     "navigation": {
                         "TrainingRequest": {
