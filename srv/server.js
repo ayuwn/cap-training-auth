@@ -1,4 +1,4 @@
-require("dotenv").config({ path: require("path").join(__dirname, "../.env") });
+// require("dotenv").config({ path: require("path").join(__dirname, "../.env") });
 
 const cds = require("@sap/cds");
 const admin = require("firebase-admin");
@@ -35,13 +35,22 @@ cds.on("bootstrap", app => {
                 .auth()
                 .createSessionCookie(idToken, { expiresIn });
 
+            // res.cookie("session", sessionCookie, {
+            //     maxAge: expiresIn,
+            //     httpOnly: true,
+            //     // secure: false,
+            //     secure: true,
+            //     sameSite: "none"
+            //     // sameSite: "lax"
+            // });
+
+            const isProduction = process.env.NODE_ENV === "production";
+
             res.cookie("session", sessionCookie, {
                 maxAge: expiresIn,
                 httpOnly: true,
-                // secure: false,
-                secure: true,
-                sameSite: "none"
-                // sameSite: "lax"
+                secure: isProduction,
+                sameSite: isProduction ? "none" : "lax"
             });
 
             return res.status(200).send({ status: "success" });
