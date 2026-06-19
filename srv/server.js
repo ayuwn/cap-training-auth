@@ -61,7 +61,7 @@ cds.on("bootstrap", app => {
             //     // sameSite: "lax"
             // });
 
-            const isProduction = process.env.NODE_ENV === "production";
+            const isProduction = process.env.NODE_ENV === "development";
 
             res.cookie("session", sessionCookie, {
                 maxAge: expiresIn,
