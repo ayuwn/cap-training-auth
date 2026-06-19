@@ -4,6 +4,7 @@ const cds = require("@sap/cds");
 const admin = require("firebase-admin");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const express = require("express");
 
 admin.initializeApp({
     credential: admin.credential.cert({
@@ -15,7 +16,23 @@ admin.initializeApp({
 
 cds.on("bootstrap", app => {
     app.use(cookieParser());
-    app.use(require("express").json());
+    // app.use(require("express").json());
+    app.use(express.json());
+
+    app.use(
+        "/sap.fe.cap.training",
+        express.static(path.join(__dirname, "../app/training_processor"))
+    );
+
+    app.use(
+        "/sap.fe.cap.training_analytics",
+        express.static(path.join(__dirname, "../app/training_analytics"))
+    );
+
+    app.use(
+        "/resources",
+        express.static(path.join(__dirname, "../app/resources"))
+    );
 
     app.get("/", (req, res) => {
         res.sendFile(path.join(__dirname, "../app/index.html"));
