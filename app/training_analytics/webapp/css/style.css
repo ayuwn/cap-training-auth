@@ -1,0 +1,67 @@
+/* KPI Section */
+.kpiSection {
+  padding: 0.5rem 0;
+}
+
+/* Card wrapper */
+.kpiCard {
+  border-radius: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Card inner content */
+.kpiCard .sapFCardContent {
+  height: 100%;
+  padding: 1rem 1rem;
+}
+
+/* Title */
+.kpiCard .sapMTitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #223548;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+/* Number */
+.kpiCard .sapMObjectNumber {
+  margin: 0.25rem 0;
+}
+
+.kpiCard .sapMObjectNumberText {
+  /* font-size: 1.75rem; */
+  font-size: 2.3rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+
+/* Subtitle */
+.kpiCard .sapMText {
+  font-size: 0.75rem;
+  color: #6a6d70;
+  text-align: center;
+}
+
+/* Cost card */
+.kpiCostCard .sapMObjectNumberText {
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.kpiCostCard .sapMObjectNumberUnit {
+  font-size: 0.8rem;
+  margin-left: 0.25rem;
+}
+
+/* Hover */
+.kpiCard:hover {
+  box-shadow: 0 0.25rem 0.875rem rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Smooth hover */
+.kpiCard {
+  transition: all 0.15s ease-in-out;
+}

@@ -1,0 +1,84 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.f">
+
+    <VBox class="sapUiSmallMarginBottom sapUiTinyMarginTop kpiSection">
+
+        <l:Grid defaultSpan="XL2 L2 M4 S12" hSpacing="0.5" vSpacing="0.5" containerQuery="true">
+
+            <l:content>
+
+                <!-- Total Requests -->
+                <f:Card width="100%" height="120px" class="kpiCard">
+                    <f:content>
+                        <VBox justifyContent="Center" alignItems="Start" height="100%">
+                            <Title text="Total Requests"/>
+                            <ObjectNumber number="{kpi>/totalRequests}" state="Information"/>
+                            <Text text="All Requests"/>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+
+                <!-- Submitted -->
+                <f:Card width="100%" height="120px" class="kpiCard">
+                    <f:content>
+                        <VBox justifyContent="Center" alignItems="Start" height="100%">
+                            <Title text="Submitted"/>
+                            <ObjectNumber number="{kpi>/submitted}" state="Success"/>
+                            <Text text="Requests"/>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+
+                <!-- Approved -->
+                <f:Card width="100%" height="120px" class="kpiCard">
+                    <f:content>
+                        <VBox justifyContent="Center" alignItems="Start" height="100%">
+                            <Title text="Approved"/>
+                            <ObjectNumber number="{kpi>/approved}" state="Success"/>
+                            <Text text="Requests"/>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+
+                <!-- Rejected -->
+                <f:Card width="100%" height="120px" class="kpiCard">
+                    <f:content>
+                        <VBox justifyContent="Center" alignItems="Start" height="100%">
+                            <Title text="Rejected"/>
+                            <ObjectNumber number="{kpi>/rejected}" state="Error"/>
+                            <Text text="Requests"/>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+
+                <!-- Draft -->
+                <f:Card width="100%" height="120px" class="kpiCard">
+                    <f:content>
+                        <VBox justifyContent="Center" alignItems="Start" height="100%">
+                            <Title text="Draft"/>
+                            <ObjectNumber number="{kpi>/draft}" state="Information"/>
+                            <Text text="Requests"/>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+
+                <!-- Total Cost -->
+                <f:Card width="100%" height="120px" class="kpiCard kpiCostCard">
+                    <f:content>
+                        <VBox justifyContent="Center" alignItems="Start" height="100%">
+                            <Title text="Total Estimated Cost"/>
+                            <ObjectNumber number="{kpi>/totalCost}" state="Information"/>
+                            <Text text="IDR"/>
+                        </VBox>
+                    </f:content>
+                </f:Card>
+
+            </l:content>
+
+        </l:Grid>
+
+    </VBox>
+
+</core:FragmentDefinition>

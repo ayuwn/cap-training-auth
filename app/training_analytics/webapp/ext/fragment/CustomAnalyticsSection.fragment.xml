@@ -1,0 +1,132 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+
+    <l:Grid defaultSpan="XL3 L3 M6 S12" hSpacing="0.5" vSpacing="1" containerQuery="true">
+
+        <l:content>
+
+            <!-- Donut -->
+            <Panel headerText="Requests by Status">
+
+                <viz:VizFrame id="statusChart" vizType="donut" height="300px" width="100%">
+
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{analytics>/statusData}">
+
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="Status" value="{analytics>Status}" />
+                            </viz.data:dimensions>
+
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="Requests" value="{analytics>Count}" />
+                            </viz.data:measures>
+
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="size" type="Measure" values="Requests"/>
+
+                        <viz.feeds:FeedItem uid="color" type="Dimension" values="Status"/>
+                    </viz:feeds>
+
+                </viz:VizFrame>
+
+            </Panel>
+
+            <!-- Column: Requests by Department -->
+            <Panel headerText="Requests by Department">
+
+                <viz:VizFrame id="departmentChart" vizType="column" height="300px" width="100%">
+
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{analytics>/requestByDepartment}">
+
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="Department" value="{analytics>DepartmentName}" />
+                            </viz.data:dimensions>
+
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="Requests" value="{analytics>TotalRequests}" />
+                            </viz.data:measures>
+
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Requests"/>
+
+                        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Department"/>
+                    </viz:feeds>
+
+                </viz:VizFrame>
+
+            </Panel>
+
+            <!-- Bar -->
+            <Panel headerText="Estimated Cost by Training">
+
+                <viz:VizFrame id="costChart" vizType="bar" height="300px" width="100%">
+
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{analytics>/costByTraining}">
+
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="Training" value="{analytics>TrainingName}" />
+                            </viz.data:dimensions>
+
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="Cost" value="{analytics>TotalCost}" />
+                            </viz.data:measures>
+
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Cost"/>
+
+                        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Training"/>
+                    </viz:feeds>
+
+                </viz:VizFrame>
+
+            </Panel>
+
+            <!-- Line -->
+            <Panel headerText="Requests by Month">
+
+                <viz:VizFrame id="monthChart" vizType="line" height="300px" width="100%">
+
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{analytics>/requestsByMonth}">
+
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="Month" value="{analytics>Month}" />
+                            </viz.data:dimensions>
+
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="Requests" value="{analytics>TotalRequests}" />
+                            </viz.data:measures>
+
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Requests"/>
+
+                        <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Month"/>
+                    </viz:feeds>
+
+                </viz:VizFrame>
+
+            </Panel>
+
+        </l:content>
+
+    </l:Grid>
+
+</core:FragmentDefinition>

@@ -1,0 +1,113 @@
+{
+  "_version": "1.42.0",
+  "sap.app": {
+    "id": "sap.fe.cap.training_analytics",
+    "type": "application",
+    "title": "Training Request Overview",
+    "description": "Training Request Analytics",
+    "i18n": {
+      "bundleName": "sap.fe.cap.training_analytics.i18n.i18n",
+      "supportedLocales": ["en", "de", "fr"],
+      "fallbackLocale": "en"
+    },
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/analytics/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "resources": "resources.json"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.139.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {},
+        "sap.viz": {}
+      }
+    },
+    "resources": {
+        "css": [
+            {
+                "uri": "css/style.css"
+            }
+        ]
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "sap.fe.cap.training_analytics.i18n.i18n",
+          "supportedLocales": ["en", "de", "fr"],
+          "fallbackLocale": "en"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "TrainingRequestsList",
+          "target": "TrainingRequestsList"
+        }
+      ],
+      "targets": {
+        "TrainingRequestsList": {
+            "type": "Component",
+            "id": "TrainingRequestsList",
+            "name": "sap.fe.templates.ListReport",
+            "options": {
+                "settings": {
+                "entitySet": "TrainingRequests"
+                }
+            }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ListReport.ListReportController": {
+            "controllerName": "sap.fe.cap.training_analytics.ext.controller.CustomKPISection"
+          }
+        }
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "analytical"
+  }
+}
