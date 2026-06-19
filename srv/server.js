@@ -38,8 +38,10 @@ cds.on("bootstrap", app => {
             res.cookie("session", sessionCookie, {
                 maxAge: expiresIn,
                 httpOnly: true,
-                secure: false,
-                sameSite: "lax"
+                // secure: false,
+                secure: true,
+                sameSite: "none"
+                // sameSite: "lax"
             });
 
             return res.status(200).send({ status: "success" });
