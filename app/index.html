@@ -180,9 +180,11 @@ window.login = async function () {
 
         setTimeout(() => {
             if (role === "admin") {
-                location.href = "/sap.fe.cap.training/index.html?role=admin";
+                // location.href = "/sap.fe.cap.training/index.html?role=admin";
+                window.location.replace("/sap.fe.cap.training/index.html");
             } else if (role === "supervisor") {
-                location.href = "/sap.fe.cap.training/index.html?role=supervisor";
+                // location.href = "/sap.fe.cap.training/index.html?role=supervisor";
+                window.location.replace("/sap.fe.cap.training/index.html");
             }
         }, 500);
 
@@ -212,7 +214,8 @@ window.openAnalytics = async function () {
         await createSession(email, password);
         // location.href = "/sap.fe.cap.training_analytics/index.html";
         setTimeout(() => {
-            location.href = "/sap.fe.cap.training_analytics/index.html";
+            // location.href = "/sap.fe.cap.training_analytics/index.html";
+            window.location.replace("/sap.fe.cap.training_analytics/index.html");
         }, 500);
     } catch (error) {
         handleLoginError(error);
