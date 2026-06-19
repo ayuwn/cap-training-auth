@@ -21,12 +21,12 @@ cds.on("bootstrap", app => {
 
     app.use(
         "/sap.fe.cap.training",
-        express.static(path.join(__dirname, "../app/training_processor"))
+        express.static(path.join(__dirname, "../app/training_processor/webapp"))
     );
 
     app.use(
         "/sap.fe.cap.training_analytics",
-        express.static(path.join(__dirname, "../app/training_analytics"))
+        express.static(path.join(__dirname, "../app/training_analytics/webapp"))
     );
 
     app.use(
